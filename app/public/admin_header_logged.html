@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $page_title; ?></title></head>
+    <style>
+        body {
+            color: darkslategray;
+        }
+        nav {
+            background-color:rgb(130, 204, 166);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        ul{
+            width: 1400px; 
+            margin: auto; 
+        }
+        li {
+            float: left;
+            /*position: relative;*/
+            list-style-type:none;
+        }
+        a {
+            text-decoration:none;
+            color: black;
+            display:block;
+            padding: 10px 25px; 
+            width: 200px; 
+            text-transform: uppercase; 
+            text-align: center; 
+            float: left; 
+        }
+        div {
+            display: inline-block;
+        }
+        .a h1{
+            color: black;
+        }
+        h1 {
+            font-size: 18px;
+        }
+        footer {
+            border-top: solid 1px darkslategray;
+            margin-top: 20px;
+        }
+        form {
+            line-height: 35px;
+        }
+        .err {
+            color: red;
+        }
+
+        .users {
+            background-color: pink;
+            border-radius: 10px;
+            margin: 10px;
+            font-size: 12px;
+        }
+
+        
+    </style>
+<body>
+    <nav>
+        <div class="b">
+            <ul>
+                <li><a href="admin_loggedin.php">Main page</a></li>
+                <li><a href="admin_users.php">Users Manager</a></li>
+                <li><a href="admin_films.php">Films Manager</a></li>
+                <li><a href="logout.php">Log out</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class=""container>
+
+
+

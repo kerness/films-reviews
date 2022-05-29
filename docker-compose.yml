@@ -1,0 +1,31 @@
+version: '3'
+services:
+    web:
+        image: nginx:latest
+        ports:
+            - "80:80"
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
+            - ./app:/app
+        links:
+            - php
+    php:
+        image: quay.io/ignited/php-nginx-fpm:5.6.30-latest
+      #build:
+      #     context: .
+      #     dockerfile: PHP.Dockerfile
+        volumes:
+            - ./app:/app
+    mysql:
+        image: mariadb:latest
+        environment:
+             MYSQL_ROOT_PASSWORD: 'Kl*#JklOpFTR34!'
+             MYSQL_USER: 'Magnesium1756'
+             MYSQL_PASSWORD: '2ima6BwPMQn9NV'
+             MYSQL_DATABASE: 'website'
+        volumes:
+            - mysqldata:/var/lib/mysql
+        ports:
+            - 3306:3306
+volumes:
+  mysqldata: {}
