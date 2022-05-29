@@ -6,7 +6,7 @@
         header('Location: http://51.38.131.114/index.php');
     }
     
-    $page_title = "Add usera";
+    $page_title = "Add user";
     include('admin_header_logged.html');
 ?>
 
