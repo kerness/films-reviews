@@ -21,7 +21,7 @@
 
 <?php
 
-    require_once("DBconnect.php");
+    require_once("../../private/DBconnect.php");
 
 
     if(isset($_REQUEST["n"]) && $_REQUEST["n"] == 1)

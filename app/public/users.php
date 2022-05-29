@@ -2,7 +2,7 @@
 $page_title = "Zarejestrowani użytkownicy";
 include('header.html');
 
-require_once('DBconnect.php');
+require_once('../private/DBconnect.php');
 
 #$q = "select email, login, password from user";// WHERE login = 'Pennie';";
 $q = "SELECT * FROM user";# WHERE login ='admin'";

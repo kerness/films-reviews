@@ -1,6 +1,14 @@
 <?php 
 $page_title = "Movies ranking";
 
+
+session_start();
+
+if(!isset($_SESSION['user_id']))
+{
+    header('Location: index.php');
+}
+
 # necessary files: page header and DB connection details 
 include('header_logged.html');
 require_once('../private/DBconnect.php');
@@ -8,37 +16,35 @@ require_once('../private/DBconnect.php');
 #$q = "select email, login, password from user";// WHERE login = 'Pennie';";
 #$q = "SELECT * FROM user";# WHERE login ='admin'";
 
-$q = " SELECT title, avg_rating
-FROM
-(
-	SELECT m.title,
-		   m.movie_id,
-		   ROUND(AVG(r.rating),2) AS avg_rating,
-		   RANK() OVER(ORDER BY AVG(r.rating) DESC) rating_rank
-	FROM movie m
-	INNER JOIN reviews r 
-		ON m.movie_id = r.movie_id 
-	GROUP BY m.title, m.movie_id
-) ranked_rating ORDER BY avg_rating DESC;";
+$user = $_SESSION['login'];
+
+$q = "
+    SELECT title, rating 
+    FROM movie 
+    JOIN reviews ON movie.movie_id = reviews.movie_id 
+    WHERE reviews.user_id = (SELECT user_id FROM user WHERE login = '$user')
+    ORDER BY rating DESC;  
+";
 
 $r = mysqli_query($dbc, $q);
 
 $num = mysqli_num_rows($r);
 
 echo "<p>Number of reviewed films: $num </p>";
+echo "Wyświetlam ranking uzytownika {$_SESSION['login']}";
 
 
 echo '<table> 
         <tr style="text-align: left;">
             <th>Film title</th>
-            <th>Ocena</th>
+            <th>Twoja ocena</th>
         </tr>';
 
 while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
 {
     echo "<tr> 
             <td>" . $row['title'] . "</td>
-            <td>" . $row['avg_rating'] . "</td>
+            <td>" . $row['rating'] . "</td>
         </tr>";
 }
 

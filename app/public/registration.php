@@ -5,7 +5,7 @@ include('header.html');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    require_once('DBconnect.php');
+    require_once('../private/DBconnect.php');
     $errors = array();
 
     if(empty($_POST['login']))

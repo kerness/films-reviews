@@ -3,7 +3,7 @@ session_start();
 
 if(!isset($_SESSION['user_id']))
 {
-    header('Location: http://51.38.131.114/index.php');
+    header('Location: index.php');
 }
 else
 {

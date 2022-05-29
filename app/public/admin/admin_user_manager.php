@@ -22,7 +22,7 @@ include('admin_header_logged.html');
 <br>
 
 <?php
-require_once('DBconnect.php');
+require_once('../../private/DBconnect.php');
 
 if(isset($_REQUEST['d']) && $_REQUEST['d']==1)
 {
@@ -70,6 +70,6 @@ else{
 
 mysqli_close($dbc);
 
-include('footer.html');
+include('../footer.html');
 
 ?>

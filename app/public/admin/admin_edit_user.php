@@ -21,7 +21,7 @@
 
 <?php
 
-    require_once("DBconnect.php");
+    require_once("../../private/DBconnect.php");
     $id = $_REQUEST["id"];
 
 

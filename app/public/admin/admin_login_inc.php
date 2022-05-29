@@ -1,6 +1,6 @@
 <?php 
 $page_title = "Admin";
-include('header.html');
+include('../header.html');
 
 if(isset($errors) && !empty($errors))
 {
@@ -21,4 +21,4 @@ if(isset($errors) && !empty($errors))
     <p><input type='submit' value='Sign in'></p>
 </form>
 
-<?php include('footer.html');?>
+<?php include('../footer.html');?>

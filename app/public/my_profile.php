@@ -4,7 +4,7 @@ session_start();
 
 if(!isset($_SESSION['user_id']))
 {
-    header('Location: http://51.38.131.114/index.php');
+    header('Location: index.php');
 }
 
 $page_title = "My profile";
@@ -13,7 +13,7 @@ include('header_logged.html');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    require_once('DBconnect.php');
+    require_once('../private/DBconnect.php');
 
     $errors = array();
     

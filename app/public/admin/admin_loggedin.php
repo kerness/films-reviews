@@ -13,6 +13,6 @@
 
     echo "<p class='pageHeader'>Welcome, {$_SESSION['login']}!</p>";
 
-    include('footer.html');
+    include('../footer.html');
 
 ?>
