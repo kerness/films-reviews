@@ -60,7 +60,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         //update NAME
         if($n != $_SESSION["login"])
         {
-            $q = "UPDATE user SET login='$n' WHERE email='$em' AND password='$p'";
+            $q = "UPDATE user SET login='$n' WHERE email='$em' AND password= SHA1('$p')";
             $r = mysqli_query($dbc, $q);        
 
             if(mysqli_affected_rows($dbc) == 1)
@@ -75,10 +75,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         }
 
         //update PASSWORD
-
         if($action)
         {
-            $q = "UPDATE user SET password='$np' WHERE email='$em' AND password='$p'";
+            $q = "UPDATE user SET password= SHA1('$np') WHERE email='$em' AND password= SHA1('$p')";
             $r = mysqli_query($dbc, $q);
 
             if(mysqli_affected_rows($dbc) == 1)

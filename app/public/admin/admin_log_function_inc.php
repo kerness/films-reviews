@@ -24,7 +24,7 @@
 
         if(empty($errors))
         {
-            $q = "SELECT user_id, login FROM user WHERE email = '$e' AND password = '$p' AND user_level=1";
+            $q = "SELECT user_id, login FROM user WHERE email = '$e' AND password = SHA1('$p') AND user_level=1";
             $r = mysqli_query($dbc, $q);
             
             if(mysqli_num_rows($r) == 1)

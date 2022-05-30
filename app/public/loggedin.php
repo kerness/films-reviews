@@ -6,7 +6,6 @@
     include('header_logged.html');
 
 
-    //echo "<p class='pageHeader'>Witaj {$_COOKIE['first_name']}</p>";
     echo "<p class='pageHeader'>Welcome, {$_SESSION['login']}</p>";
 
 ?>

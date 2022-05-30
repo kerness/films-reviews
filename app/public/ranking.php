@@ -27,7 +27,7 @@ echo "<p>Number of reviewed films: $num </p>";
 echo '<table> 
         <tr style="text-align: left;">
             <th>Film title</th>
-            <th>Ocena</th>
+            <th>Rating</th>
         </tr>';
 
 while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))

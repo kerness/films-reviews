@@ -22,9 +22,10 @@
             $p = trim($pass);
         }
 
+
         if(empty($errors))
         {
-            $q = "SELECT user_id, login FROM user WHERE email = '$e' AND password = '$p'";
+            $q = "SELECT user_id, login FROM user WHERE email = '$e' AND password = SHA1('$p')";
             $r = mysqli_query($dbc, $q);
             
             if(mysqli_num_rows($r) == 1)

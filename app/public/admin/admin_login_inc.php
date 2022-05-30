@@ -1,6 +1,6 @@
 <?php 
 $page_title = "Admin";
-include('../header.html');
+include('header_admin.html');
 
 if(isset($errors) && !empty($errors))
 {

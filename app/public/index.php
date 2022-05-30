@@ -1,6 +1,6 @@
 
 <?php
-    $page_title = "Strona główna";
+    $page_title = "Main page";
     include("header.html");
 ?>
 <div class="pageheader"><h1>Nagłowek strony</h1></div>

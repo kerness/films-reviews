@@ -15,7 +15,7 @@ include('admin_header_logged.html');
 <br>
 <div class="b" >
     <ul >
-        <li class="users"><a href="admin_user_manager.php">Manage users</a></li>
+        <li class="users" style="background-color:#FF69B4;"><a href="admin_user_manager.php">Manage users</a></li>
         <li class="users"><a href="admin_add_user.php">Add user</a></li>
     </ul>
 </div>
@@ -29,7 +29,7 @@ if(isset($_REQUEST['d']) && $_REQUEST['d']==1)
     $id = $_GET['id'];
     $q = "DELETE FROM user WHERE user_id = $id";
     $r = mysqli_query($dbc, $q);
-    echo "<div class='err'>Data has been deleted</div>";
+    echo "<div class='err'>User has been deleted</div>";
 }
 
 
@@ -42,7 +42,7 @@ $num = mysqli_num_rows($r);
 
 if($num > 0)
 {
-    echo "<p>Currently there are $num registered users</p>";
+    echo "<p>Currently there are $num registered users.</p>";
 
     echo '<table> <tr> <th> ID </th><th> Name </th><th> E-mail address </th><th> Role </th><th> Registration date </th></tr>';
     

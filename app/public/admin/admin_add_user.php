@@ -13,8 +13,8 @@
 <br>
 <div class="b" >
     <ul >
-        <li class="users"><a href="admin_user_manager.php">Zarządzanie użytkownikami</a></li>
-        <li class="users"><a href="admin_add_user.php">Dodawanie użytkowników</a></li>
+        <li class="users"><a href="admin_user_manager.php">Manage users</a></li>
+        <li class="users" style="background-color:#FF69B4;"><a href="admin_add_user.php">Add user</a></li>
     </ul>
 </div>
 <br>
@@ -31,18 +31,27 @@
         $p = $_REQUEST['pass'];
         $role = $_REQUEST['role'];
 
-
-        $q = "INSERT INTO user (user_id, login, password, email, user_level, registration_date) VALUES (1002, '$log', '$p', '$em', $role, NOW())";
+        $q = "SELECT user_id FROM user WHERE email = '$em";
         $r = mysqli_query($dbc, $q);
 
-        if($r)
+        if(mysqli_num_rows($r) != 0)
         {
-            echo "<p>User " . $log . " has been added." . "</p>";
+            echo "<p>Error! E-mail address already exists.</p>";
         }
-        else{
-            echo "<p>Error!</p>";
+        else
+        {
+            $q = "INSERT INTO user (user_id, login, password, email, user_level, registration_date) VALUES (NULL, '$log', SHA1('$p'), '$em', $role, NOW())";
+            $r = mysqli_query($dbc, $q);
+    
+            if($r)
+            {
+                echo "<p>User " . $log . " has been added." . "</p>";
+            }
+            else
+            {
+                echo "<p>Error!</p>";
+            }
         }
-
     }
 ?>
 

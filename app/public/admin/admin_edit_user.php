@@ -13,8 +13,8 @@
 <br>
 <div class="b" >
     <ul >
-        <li class="users"><a href="admin_user_manager.php">Zarządzanie użytkownikami</a></li>
-        <li class="users"><a href="admin_add_user.php">Dodawanie użytkowników</a></li>
+        <li class="users"><a href="admin_user_manager.php">Manage users</a></li>
+        <li class="users"><a href="admin_add_user.php">Add user</a></li>
     </ul>
 </div>
 <br>
@@ -24,20 +24,29 @@
     require_once("../../private/DBconnect.php");
     $id = $_REQUEST["id"];
 
+    $q = "SELECT user_id, login, email, password, user_level FROM user WHERE user_id = $id";
+    $r = mysqli_query($dbc, $q);
+    $row = mysqli_fetch_array($r, MYSQLI_ASSOC);
 
-    if(isset($_REQUEST["u"]) && $_REQUEST["u"] == 1)
+    //UPDATE NAME
+    if(isset($_REQUEST["u"]) && $_REQUEST["u"] == 1 && $_REQUEST["login"] != $row["login"])
     {
-        $q = "UPDATE user SET login = '".$_REQUEST["login"]."', email = '".$_REQUEST["email"]."', password = '".$_REQUEST["pass"]."' WHERE user_id = $id";
+        $q = "UPDATE user SET login = '".$_REQUEST["login"]."' WHERE user_id = $id";
         $r = mysqli_query($dbc, $q);
-        mysqli_close($dbc);
-        header('Location: http://localhost/project/film-reviews/admin_user_manager.php');
+        $row["login"] = $_REQUEST["login"];
 
     }
 
 
-    $q = "SELECT user_id, login, email, password, user_level FROM user WHERE user_id = $id";
-    $r = mysqli_query($dbc, $q);
-    $row = mysqli_fetch_array($r, MYSQLI_ASSOC);
+    //UPDATE PASSWORD
+    if(isset($_REQUEST["u"]) && $_REQUEST["u"] == 1 && !empty($_REQUEST["pass"]))
+    {
+        $q = "UPDATE user SET password = SHA1('".$_REQUEST["pass"]."') WHERE user_id = $id";
+        $r = mysqli_query($dbc, $q);
+    }
+
+
+    mysqli_close($dbc);
 
 ?>
 
@@ -48,8 +57,8 @@
     <p>ID: <input type="text" name="id" value="<?php echo $row["user_id"]; ?>" readonly></p>
     <p>Role: <input type="text" name="role" value="<?php if($row["user_level"]==0){ echo "regular user";} else { echo "admin";}; ?>" readonly></p>
     <p>Name: <input type="text" name="login" value="<?php echo $row["login"]; ?>"></p>
-    <p>E-mail address: <input type="text" name="email" value="<?php echo $row["email"]; ?>"></p>
-    <p>Password: <input type="text" name="pass" value="<?php echo $row["password"]; ?>"></p>
+    <p>E-mail address: <input type="text" name="email" value="<?php echo $row["email"]; ?>" readonly></p>
+    <p>Password: <input type="password" name="pass" ></p>
     <input type="submit" value="Save">
 </form>
 

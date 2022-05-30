@@ -14,10 +14,6 @@
             $_SESSION["login"] = $data["login"];
             $_SESSION["email"] = $_POST["email"];
 
-            //setcookie("user_id", $data["user_id"], time() + 60);
-            //setcookie("first_name", $data["first_name"], time() + 60);
-            //header('Location: 127.0.0.1/loggedin.php');
-
             if (headers_sent()) {
                 die("Error: headers already sent!");
             }

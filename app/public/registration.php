@@ -24,6 +24,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     else
     {
         $e = trim($_POST['email']);
+
+        $q = "SELECT user_id FROM user WHERE email = '$e'";
+        $r = mysqli_query($dbc, $q);
+
+        if(mysqli_num_rows($r) != 0)
+        {
+            $errors[] = "E-mail address already exists.";
+        }
     }
 
     if(empty($_POST['pass1']) || empty($_POST['pass2']))
@@ -41,15 +49,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
     if(empty($errors))
     {
-        $q = "INSERT INTO `user` (`user_id`, `login`, `password`, `email`, `user_level`, `registration_date`) VALUES (1001, '$log', '$p', '$e', 1, NOW())";
+        $q = "INSERT INTO `user` (`user_id`, `login`, `password`, `email`, `user_level`, `registration_date`) VALUES (NULL, '$log', SHA1('$p'), '$e', DEFAULT, NOW())";
         $r = mysqli_query($dbc, $q);
-        if($r)
-        {
-            echo "udalo sie";
-        }
-        else{
-            "nie poszlo";
-        }
+        
 
         if(mysqli_affected_rows($dbc) == 1)
         {
