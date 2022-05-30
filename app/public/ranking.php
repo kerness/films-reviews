@@ -62,3 +62,4 @@ mysqli_close($dbc);
 include('footer.html');
 
 ?>
+<link rel="stylesheet" href="CSS/ranking_style.css" type="text/css">

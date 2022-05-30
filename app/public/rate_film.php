@@ -21,15 +21,58 @@
     {    
         $rate = $_GET['rate'];
         $m_id = $_GET['m_id'];
-        $sql = "INSERT INTO reviews (user_id, movie_id, rating, text) VALUES ($u_id, $m_id, $rate, '');";
 
         // zrobić tak żeby nie dało się ocenić filmu już ocenionego
+        //$sql1="SELECT COUNT(review_id) AS user_reviews_number_of_one_film FROM reviews where user_id = $u_id AND movie_id = $m_id;";
+        //$sql2 = "INSERT INTO reviews (user_id, movie_id, rating, text) VALUES ($u_id, $m_id, $rate, '');";
 
-        if (mysqli_query($dbc, $sql)) {
-            echo "Your rate for a $title film has been saved!";
-        } else {
-            echo "$title Error: " . $sql . ":-" . mysqli_error($dbc);
+        // $num_reviews = $dbc->query($sql1);
+        // $row = $result->fetch_array(MYSQLI_NUM);
+        // print_r($row);
+
+        // Perform query
+        // if ($result = $mysqli -> query($sql1)) {
+        //     echo "Returned rows are: " . $result -> num_rows;
+        //     // Free result set
+        //     $result -> free_result();
+        // }
+
+        function is_reviewed($db, $user, $movie) {
+            // this query should return onlu one row
+            $sql1="SELECT review_id AS user_reviews_number_of_one_film FROM reviews where user_id = $user AND movie_id = $movie;";
+            $r = mysqli_query($db, $sql1);
+            $num = mysqli_num_rows($r);
+            mysqli_free_result($r);
+            if ($num >= 1) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
         }
+
+        function rate_film($db, $user, $movie, $user_rating, $movie_title) {
+            // first check whether the film was alreadey reviewwd
+            if (!is_reviewed($db, $user, $movie)) { // if not reviewed insert new
+                $sql_insert = "INSERT INTO reviews (user_id, movie_id, rating, text) VALUES ($user, $movie, $user_rating, '');";
+
+                if (mysqli_query($db, $sql_insert)) {
+                    echo "Your rate for a $movie_title film has been saved!";
+                    mysqli_free_result();
+                } else {
+                    echo "$title Error: " . $sql_insert . ":-" . mysqli_error($db);
+                }
+            } else { // if reviewed update the rating
+                $sql_update = "UPDATE reviews SET rating = $user_rating  WHERE user_id = $user AND movie_id = $movie;";
+                $r = mysqli_query($db, $sql_update);
+                $num = mysqli_num_rows($r);
+                echo "Your rate for a $movie_title film has been updated";
+                mysqli_free_result($r);
+            }
+        }
+        
+        
+        rate_film($dbc, $u_id, $m_id, $rate, $title);
+
         mysqli_close($dbc);
     } 
 ?>

@@ -1,9 +1,3 @@
-<style>
- /*jakoś to nie działa. chciałem żeby tabelka nie miałą przerw między wierszami */
-a {padding:0;margin:0;} 
-</style>
-
-
 <?php 
     session_start();
 $page_title = "Movies ranking";
@@ -31,24 +25,22 @@ $r = mysqli_query($dbc, $q);
 
 $num = mysqli_num_rows($r);
 
-echo "<p>Number of reviewed films: $num </p>";
+echo "<p>Overall number of reviewed films: $num </p>";
 
 
 echo '<table> 
-        <tr style="text-align: left;">
-            <th>movie_id do testów</th>
+        <tr>
             <th>Film title</th>
             <th>Overall Rating</th>
-            <th>Your rating</th>
+            <th>Rate</th>
         </tr>';
 
 while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
 {
     echo "<tr> 
-            <td>" . $row['movie_id'] . "</td>
             <td>" . $row['title'] . "</td>
             <td>" . $row['avg_rating'] . "</td>
-            <td> <a" . " href='rate_film.php?m_id=" . $row['movie_id'] . "&title=" . $row['title'] ."'>Oceń</a> </td>
+            <td> <a" . " href='rate_film.php?m_id=" . $row['movie_id'] . "&title=" . $row['title'] ."'>Rate</a> </td>
         </tr>";
 
 }
@@ -65,3 +57,4 @@ mysqli_close($dbc);
 include('footer.html');
 
 ?>
+<link rel="stylesheet" href="CSS/ranking_style.css" type="text/css">
