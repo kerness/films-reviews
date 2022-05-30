@@ -22,21 +22,6 @@
         $rate = $_GET['rate'];
         $m_id = $_GET['m_id'];
 
-        // zrobić tak żeby nie dało się ocenić filmu już ocenionego
-        //$sql1="SELECT COUNT(review_id) AS user_reviews_number_of_one_film FROM reviews where user_id = $u_id AND movie_id = $m_id;";
-        //$sql2 = "INSERT INTO reviews (user_id, movie_id, rating, text) VALUES ($u_id, $m_id, $rate, '');";
-
-        // $num_reviews = $dbc->query($sql1);
-        // $row = $result->fetch_array(MYSQLI_NUM);
-        // print_r($row);
-
-        // Perform query
-        // if ($result = $mysqli -> query($sql1)) {
-        //     echo "Returned rows are: " . $result -> num_rows;
-        //     // Free result set
-        //     $result -> free_result();
-        // }
-
         function is_reviewed($db, $user, $movie) {
             // this query should return onlu one row
             $sql1="SELECT review_id AS user_reviews_number_of_one_film FROM reviews where user_id = $user AND movie_id = $movie;";

@@ -1,7 +1,6 @@
 <?php 
 $page_title = "Movies ranking";
 
-
 session_start();
 
 if(!isset($_SESSION['user_id']))
@@ -9,12 +8,8 @@ if(!isset($_SESSION['user_id']))
     header('Location: index.php');
 }
 
-# necessary files: page header and DB connection details 
 include('header_logged.html');
 require_once('../private/DBconnect.php');
-
-#$q = "select email, login, password from user";// WHERE login = 'Pennie';";
-#$q = "SELECT * FROM user";# WHERE login ='admin'";
 
 $user = $_SESSION['login'];
 
@@ -53,22 +48,9 @@ while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
 
 echo "</table>";
 
-
-
-// echo '<table> <tr> <th>Nazwisko, Imię</th> <th> Data rejestracji</th> </tr>';
-
-// while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
-// {
-//     echo "<tr> <td>" . $row['email'] . "</td><td>" . $row['login'] . "</td><td>". $row['user_level'] . "</td><td>" . $row['password'] . "</td></tr>";
-// }
-
-// echo "</table>";
-
 mysqli_free_result($r);
-
 mysqli_close($dbc);
 
 include('footer.html');
-
 ?>
 <link rel="stylesheet" href="CSS/ranking_style.css" type="text/css">

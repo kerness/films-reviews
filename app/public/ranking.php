@@ -1,12 +1,8 @@
 <?php 
 $page_title = "Movies ranking";
 
-# necessary files: page header and DB connection details 
 include('header.html');
 require_once('../private/DBconnect.php');
-
-#$q = "select email, login, password from user";// WHERE login = 'Pennie';";
-#$q = "SELECT * FROM user";# WHERE login ='admin'";
 
 $q = " SELECT title, avg_rating
 FROM
@@ -44,21 +40,8 @@ while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
 
 echo "</table>";
 
-
-
-// echo '<table> <tr> <th>Nazwisko, Imię</th> <th> Data rejestracji</th> </tr>';
-
-// while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
-// {
-//     echo "<tr> <td>" . $row['email'] . "</td><td>" . $row['login'] . "</td><td>". $row['user_level'] . "</td><td>" . $row['password'] . "</td></tr>";
-// }
-
-// echo "</table>";
-
 mysqli_free_result($r);
-
 mysqli_close($dbc);
-
 include('footer.html');
 
 ?>
