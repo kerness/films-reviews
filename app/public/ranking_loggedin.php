@@ -5,6 +5,7 @@ a {padding:0;margin:0;}
 
 
 <?php 
+    session_start();
 $page_title = "Movies ranking";
 
 # necessary files: page header and DB connection details 
@@ -47,8 +48,9 @@ while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
             <td>" . $row['movie_id'] . "</td>
             <td>" . $row['title'] . "</td>
             <td>" . $row['avg_rating'] . "</td>
-            <td> <a" . " href='rate_film.php?id=" . $row['movie_id'] . "&title=" . $row['title'] ."'>Oceń</a> </td>
+            <td> <a" . " href='rate_film.php?m_id=" . $row['movie_id'] . "&title=" . $row['title'] ."'>Oceń</a> </td>
         </tr>";
+
 }
 
 
