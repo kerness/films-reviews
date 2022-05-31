@@ -82,8 +82,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 ?>
 
 
-<h1> Create Account </h1>
 <form action="registration.php" method="post">
+    <h1> Create Account </h1>
     <p>Name: <input type="text" name="login" size="20" maxlength="20" value=<?php if(isset($_POST['login'])) echo $_POST['login'];?>></p>
     <p>E-mail address: <input type="text" name="email" size="20" maxlength="60" value=<?php if(isset($_POST['email'])) echo $_POST['email'];?>></p>
     <p>Password: <input type="password" name="pass1" size="10" maxlength="20" ></p>

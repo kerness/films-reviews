@@ -25,8 +25,8 @@ $r = mysqli_query($dbc, $q);
 
 $num = mysqli_num_rows($r);
 
-echo "{$_SESSION['login']}'s film ranking";
-echo "<p>Number of reviewed films: $num </p>";
+echo "<h1>{$_SESSION['login']}'s film ranking</h1>";
+echo "<p>Number of reviewed films: $num </p><br>";
 
 
 

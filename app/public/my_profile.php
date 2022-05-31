@@ -110,15 +110,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 ?>
 
 
-<h1> Edit personal information </h1>
 <form action="my_profile.php" method="post">
+    <h1> Edit personal information </h1>
     <p>E-mail address: <input type="text" name="email" size="20" maxlength="60" value=<?php echo $_SESSION["email"] ?> readonly></p>
     <br>
+    <p>You can change the following details:
+    <div class ="line"></div>
     <p>Name: <input type="text" name="login" size="20" maxlength="20" value=<?php echo $_SESSION['login']; ?>></p>
     <p>New password: <input type="password" name="new_pass1" size="10" maxlength="20"></p>
     <p>Confirm new password: <input type="password" name="new_pass2" size="20" maxlength="60"></p>
     <br>
-    <p>Current password: <input type="password" name="pass" size="10" maxlength="20"></p>
+    <p>Enter current password to save changes: <input type="password" name="pass" size="10" maxlength="20"></p>
     <p><input type="submit" value="Save"></p>
 </form>
 
