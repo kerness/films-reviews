@@ -1,6 +1,6 @@
 <?php 
     session_start();
-$page_title = "Movies ranking";
+$page_title = "Films ranking";
 
 # necessary files: page header and DB connection details 
 include('header_logged.html');

@@ -37,3 +37,9 @@ CONSTRAINT `FK_24` FOREIGN KEY `FK_26` (`user_id`) REFERENCES `website`.`user` (
 KEY `FK_29` (`movie_id`),
 CONSTRAINT `FK_27` FOREIGN KEY `FK_29` (`movie_id`) REFERENCES `website`.`movie` (`movie_id`)
 );
+
+-- **************************************
+
+ALTER TABLE user ADD COLUMN user_level INT NOT NULL DEFAULT(0);
+UPDATE user SET password = SHA1(password);
+INSERT INTO `user` (`login`, `password`, `email`, `user_level`, `registration_date`) VALUES ('admin', SHA1('$admin'), 'admin', 1, NOW())";

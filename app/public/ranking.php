@@ -1,5 +1,5 @@
 <?php 
-$page_title = "Movies ranking";
+$page_title = "Films ranking";
 
 include('header.html');
 require_once('../private/DBconnect.php');

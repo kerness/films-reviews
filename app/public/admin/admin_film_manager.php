@@ -48,7 +48,7 @@ if($num > 0)
     while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
     {
         echo "<tr> <td>" . $row['id'] . "</td><td>" . $row['title'] . "</td><td>" . $row['director'] . "</td><td>" . $row["release_date"] . "</td><td>"
-        . $row['genre'] . "</td><td> <a href='admin_user_manager.php?d=1&id=" . $row['id'] . "'>Delete</a></td></tr>";
+        . $row['genre'] . "</td><td> <a href='admin_film_manager.php?d=1&id=" . $row['id'] . "'>Delete</a></td></tr>";
     }
     
     echo "</table>";
@@ -56,7 +56,7 @@ if($num > 0)
     mysqli_free_result($r);
 }
 else{
-    echo "<p> No users are currently registered.</p>";
+    echo "<p> No films are currently available.</p>";
 }
 
 mysqli_close($dbc);

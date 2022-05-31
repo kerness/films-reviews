@@ -31,10 +31,10 @@
         $rel = $_REQUEST['release'];
         $g = $_REQUEST['genre'];
 
-        $q = "INSERT INTO movie (title, director, release_date, genre) VALUES ('$t', '$d', '$rel', $g)";
+        $q = "INSERT INTO movie (title, director, release_date, genre) VALUES ('$t', '$d', '$rel', '$g');";
         $r = mysqli_query($dbc, $q);
 
-        if($r)
+        if(mysqli_affected_rows($dbc) == 1)
         {
             echo "<p>Film " . $t . " has been added." . "</p>";
         }
