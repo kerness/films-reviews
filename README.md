@@ -5,10 +5,10 @@ As an administrator you are able to manage users and films database.
 
 
 In order to run this project locally those variables must be specified in the env file for docker-compose:
-- DB_USER="Magnesium1756"
-- DB_USER_PASSWORD="2ima6BwPMQn9NV"
-- DB_ROOT_PASSWORD="Kl*#JklOpFTR34!"
-- DB_NAME="website"
+- DB_USER
+- DB_USER_PASSWORD
+- DB_ROOT_PASSWORD
+- DB_NAME
 
 A file with DB connection details:
 - location: app/private/DBconnect.php
