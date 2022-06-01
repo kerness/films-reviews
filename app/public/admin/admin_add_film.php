@@ -11,13 +11,13 @@
 ?>
 
 <br>
-<div class="b" >
-    <ul >
-        <li class="users"><a href="admin_film_manager.php">Delete films</a></li>
-        <li class="users" style="background-color:#FF69B4;"><a href="admin_add_film.php">Add film</a></li>
+    <ul class="ul_admin">
+        <li><a href="admin_film_manager.php">Delete films</a></li>
+        <li class="active"><a href="admin_add_film.php">Add film</a></li>
     </ul>
-</div>
 <br>
+<div class="container_admin">
+
 
 <?php
 
@@ -40,18 +40,18 @@
         }
         else
         {
-            echo "<p>Error!</p>";
+            echo "<p class='err'>Error!</p>";
         }
         
     }
 ?>
 
-<h1> Add film </h1>
 <form action="admin_add_film.php?n=1" method="post">
+        <h1> Add film </h1>
         <p>Title: <input type="text" name="title" ></p>
         <p>Director: <input type="text" name="director"></p>
         <p>Release_date: <input type="text" name="release"></p>
         <p>Genre: <input type="text" name="genre" ></p>
         <input type="submit" value="Add">
 </form>
-
+</div>

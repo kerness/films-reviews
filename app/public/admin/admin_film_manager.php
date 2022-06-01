@@ -13,13 +13,12 @@ include('admin_header_logged.html');
 ?>
 
 <br>
-<div class="b" >
-    <ul >
-        <li class="users" style="background-color:#FF69B4;"><a href="admin_film_manager.php">Delete films</a></li>
-        <li class="users"><a href="admin_add_film.php">Add film</a></li>
+    <ul class="ul_admin">
+        <li class="active"><a href="admin_film_manager.php">Delete films</a></li>
+        <li ><a href="admin_add_film.php">Add film</a></li>
     </ul>
-</div>
 <br>
+<div class="container_admin">
 
 <?php
 require_once('../../private/DBconnect.php');
@@ -51,7 +50,7 @@ if($num > 0)
         . $row['genre'] . "</td><td> <a href='admin_film_manager.php?d=1&id=" . $row['id'] . "'>Delete</a></td></tr>";
     }
     
-    echo "</table>";
+    echo "</table></div>";
     
     mysqli_free_result($r);
 }

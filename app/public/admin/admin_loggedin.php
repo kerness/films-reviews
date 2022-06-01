@@ -11,7 +11,9 @@
     include('admin_header_logged.html');
 
 
-    echo "<p class='pageHeader'>Welcome, {$_SESSION['login']}!</p>";
+    echo "<p class='pageHeader'><h1>Welcome, {$_SESSION['login']}</h1></p>";
+
+echo "<p> You have logged successfully!</p>";
 
     include('../footer.html');
 

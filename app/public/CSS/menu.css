@@ -71,7 +71,7 @@ form {
     line-height: 35px;
 }
 .err {
-    color: rgb(109, 43, 43);
+    color: rgb(149, 49, 49);
 }
 
 .container {
@@ -84,9 +84,34 @@ input {
     float: right;
 }
 
+.role {
+    float: none;
+
+}
+
 .line {
     width: 100%;
     margin: 0 auto;
     height: 1px;
     background-color: darkslategray;
+}
+
+
+.active {
+    background-color: rgb(89, 107, 78);
+}
+
+.ul_admin {
+    margin: 0 auto;
+
+    width: auto;
+    position: absolute;
+    margin-bottom: 50px;
+}
+
+.container_admin {
+    margin: 0 auto;
+    padding-top: 70px;
+    text-align: justify;
+    width: 100%;
 }

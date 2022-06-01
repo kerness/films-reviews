@@ -13,9 +13,9 @@ if(isset($errors) && !empty($errors))
 }
 ?>
 
-<h1>Sign in as Admin</h1>
 
 <form action="admin_login.php" method="post">
+    <h1>Sign in as Admin</h1>
     <p>E-mail address: <input type='text' name='email'></p> 
     <p>Password: <input type='password' name='pass'></p>
     <p><input type='submit' value='Sign in'></p>

@@ -11,14 +11,12 @@
 ?>
 
 <br>
-<div class="b" >
-    <ul >
-        <li class="users"><a href="admin_user_manager.php">Manage users</a></li>
-        <li class="users"><a href="admin_add_user.php">Add user</a></li>
+    <ul class="ul_admin">
+        <li class="active"><a href="admin_user_manager.php">Manage users</a></li>
+        <li><a href="admin_add_user.php">Add user</a></li>
     </ul>
-</div>
 <br>
-
+<div class="container_admin">
 <?php
 
     require_once("../../private/DBconnect.php");
@@ -31,12 +29,10 @@
     //UPDATE NAME
     if(isset($_REQUEST["u"]) && $_REQUEST["u"] == 1 && $_REQUEST["login"] != $row["login"])
     {
-        $q = "UPDATE user SET login = '".$_REQUEST["login"]."' WHERE user_id = $id";
+        $q = "UPDATE user SET login = '".$_REQUEST["login"]."' WHERE user_id = '$id'";
         $r = mysqli_query($dbc, $q);
         $row["login"] = $_REQUEST["login"];
-
     }
-
 
     //UPDATE PASSWORD
     if(isset($_REQUEST["u"]) && $_REQUEST["u"] == 1 && !empty($_REQUEST["pass"]))
@@ -51,8 +47,8 @@
 ?>
 
 
-<h1> Edit user's personal information </h1>
 <form action="admin_edit_user.php" method="post">
+    <h1> Edit user's personal information </h1>
     <p><input type="hidden" name="u" value="1"></p>
     <p>ID: <input type="text" name="id" value="<?php echo $row["user_id"]; ?>" readonly></p>
     <p>Role: <input type="text" name="role" value="<?php if($row["user_level"]==0){ echo "regular user";} else { echo "admin";}; ?>" readonly></p>
@@ -61,6 +57,6 @@
     <p>Password: <input type="password" name="pass" ></p>
     <input type="submit" value="Save">
 </form>
-
+</div>
 
 <?php include("footer.html")?>

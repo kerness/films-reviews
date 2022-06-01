@@ -11,13 +11,12 @@
 ?>
 
 <br>
-<div class="b" >
-    <ul >
-        <li class="users"><a href="admin_user_manager.php">Manage users</a></li>
-        <li class="users" style="background-color:#FF69B4;"><a href="admin_add_user.php">Add user</a></li>
+    <ul class="ul_admin">
+        <li><a href="admin_user_manager.php">Manage users</a></li>
+        <li  class="active"><a href="admin_add_user.php">Add user</a></li>
     </ul>
-</div>
 <br>
+<div class="container_admin">
 
 <?php
 
@@ -31,39 +30,39 @@
         $p = $_REQUEST['pass'];
         $role = $_REQUEST['role'];
 
-        $q = "SELECT user_id FROM user WHERE email = '$em";
+        $q = "SELECT user_id FROM user WHERE email = '$em'";
         $r = mysqli_query($dbc, $q);
 
         if(mysqli_num_rows($r) != 0)
         {
-            echo "<p>Error! E-mail address already exists.</p>";
+            echo "<p class='err'>Error! E-mail address already exists.</p>";
         }
         else
         {
             $q = "INSERT INTO user (user_id, login, password, email, user_level, registration_date) VALUES (NULL, '$log', SHA1('$p'), '$em', $role, NOW())";
             $r = mysqli_query($dbc, $q);
     
-            if($r)
+            if(mysqli_affected_rows($dbc) == 1)
             {
                 echo "<p>User " . $log . " has been added." . "</p>";
             }
             else
             {
-                echo "<p>Error!</p>";
+                echo "<p class='err'>Error!</p>";
             }
         }
     }
 ?>
-
-<h1> Add user's personal information </h1>
 <form action="admin_add_user.php?n=1" method="post">
-        <p>Role:
-        <input type="radio" id="r0" name="role" value="0" checked>
-        <label for="r0">regular user</label>
-        <input type="radio" id="r1" name="role" value="1">
-        <label for="r1">admin</label></p>
-        <p>Name: <input type="text" name="login" ></p>
-        <p>E-mail address: <input type="text" name="email"></p>
-        <p>Password: <input type="text" name="pass"></p>
-        <input type="submit" value="Add">
+    <h1> Add user's personal information </h1>
+    <p>Role:
+    <input class="role" type="radio" id="r0" name="role" value="0" checked>
+    <label for="r0">regular user</label>
+    <input class="role" type="radio" id="r1" name="role" value="1">
+    <label for="r1">admin</label></p>
+    <p>Name: <input type="text" name="login" ></p>
+    <p>E-mail address: <input type="text" name="email"></p>
+    <p>Password: <input type="text" name="pass"></p>
+    <input type="submit" value="Add">
 </form>
+</div>
