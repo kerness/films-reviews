@@ -15,7 +15,7 @@
     $m_id = $_REQUEST['m_id'];
     $title = $_REQUEST["title"];
 
-    echo "You are rating a film titled $title. ";
+    echo "<p class='rate1'>You are rating a film titled <b>" . $title. "</b> </p>";
 
     if(isset($_GET['form_submitted']))
     {    
@@ -37,11 +37,13 @@
 
         function rate_film($db, $user, $movie, $user_rating, $movie_title) {
             // first check whether the film was alreadey reviewwd
+
+            
             if (!is_reviewed($db, $user, $movie)) { // if not reviewed insert new
                 $sql_insert = "INSERT INTO reviews (user_id, movie_id, rating, text) VALUES ($user, $movie, $user_rating, '');";
 
                 if (mysqli_query($db, $sql_insert)) {
-                    echo "Your rate for a $movie_title film has been saved!";
+                    echo '<p class="rate2">Your rate for a <b> ' . $movie_title . '</b>' . ' film has been saved!</p>';
                     mysqli_free_result();
                 } else {
                     echo "$title Error: " . $sql_insert . ":-" . mysqli_error($db);
@@ -50,7 +52,7 @@
                 $sql_update = "UPDATE reviews SET rating = $user_rating  WHERE user_id = $user AND movie_id = $movie;";
                 $r = mysqli_query($db, $sql_update);
                 $num = mysqli_num_rows($r);
-                echo "Your rate for a $movie_title film has been updated";
+                echo '<p class="rate2">Your rate for a <b> ' . $movie_title . '</b>' . ' film has been updated.</p>';
                 mysqli_free_result($r);
             }
         }
@@ -75,3 +77,4 @@
         <input type="submit" name="submit" value="Rate!">
     </form>
 <?php include("footer.html")?>
+<link rel="stylesheet" href="CSS/rate_film.css" type="text/css">
