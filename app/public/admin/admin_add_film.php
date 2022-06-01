@@ -50,7 +50,7 @@
         <h1> Add film </h1>
         <p>Title: <input type="text" name="title" ></p>
         <p>Director: <input type="text" name="director"></p>
-        <p>Release_date: <input type="text" name="release"></p>
+        <p>Release date: <input type="text" name="release"></p>
         <p>Genre: <input type="text" name="genre" ></p>
         <input type="submit" value="Add">
 </form>

@@ -52,8 +52,9 @@
     <p><input type="hidden" name="u" value="1"></p>
     <p>ID: <input type="text" name="id" value="<?php echo $row["user_id"]; ?>" readonly></p>
     <p>Role: <input type="text" name="role" value="<?php if($row["user_level"]==0){ echo "regular user";} else { echo "admin";}; ?>" readonly></p>
-    <p>Name: <input type="text" name="login" value="<?php echo $row["login"]; ?>"></p>
     <p>E-mail address: <input type="text" name="email" value="<?php echo $row["email"]; ?>" readonly></p>
+    <br>
+    <p>Name: <input type="text" name="login" value="<?php echo $row["login"]; ?>"></p>
     <p>Password: <input type="password" name="pass" ></p>
     <input type="submit" value="Save">
 </form>
