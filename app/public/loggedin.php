@@ -10,6 +10,6 @@
 
 ?>
 
-<p> You have logged successfully!</p>
+<p> You have logged in successfully!</p>
 
 <?php include("Footer.html");?>
